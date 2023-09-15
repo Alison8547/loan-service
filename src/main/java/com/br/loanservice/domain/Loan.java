@@ -4,6 +4,8 @@ import com.br.loanservice.enums.Type;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,8 +27,20 @@ public class Loan {
     @Enumerated(EnumType.ORDINAL)
     private Type type;
 
+    @Column(name = "value_loan")
+    private BigDecimal valueLoan;
+
+    @Column(name = "portion")
+    private Integer portion;
+
+    @Column(name = "value_interest_rate")
+    private BigDecimal valueInterestRate;
+
     @Column(name = "interest_rate")
     private Double interestRate;
+
+    @Column(name = "time_loan")
+    private LocalDateTime timeLoan;
 
     @Column(name = "id_customer", insertable = false, updatable = false)
     private Integer idCustomer;
