@@ -25,15 +25,15 @@ public class Customer {
     @Column(name = "cpf")
     private String cpf;
 
-    @Column(name = "name")
+    @Column(name = "name_customer")
     private String name;
 
     @Column(name = "income")
     private BigDecimal income;
 
-    @Column(name = "location")
+    @Column(name = "location_customer")
     private String location;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Loan> loas = new ArrayList<>();
+    private List<Loan> loans = new ArrayList<>();
 }

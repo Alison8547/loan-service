@@ -23,7 +23,7 @@ public class Loan {
     private Integer id;
 
 
-    @Column(name = "type")
+    @Column(name = "type_loan")
     @Enumerated(EnumType.ORDINAL)
     private Type type;
 
