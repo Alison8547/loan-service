@@ -24,6 +24,7 @@ public class Customer {
 
     @Column(name = "cpf")
     private String cpf;
+
     @Column(name = "name")
     private String name;
 
