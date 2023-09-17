@@ -33,8 +33,11 @@ public class Loan {
     @Column(name = "portion")
     private Integer portion;
 
-    @Column(name = "value_interest_rate")
-    private BigDecimal valueInterestRate;
+    @Column(name = "value_interest_rate_loan")
+    private BigDecimal valueInterestRateLoan;
+
+    @Column(name = "installment_per_month")
+    private BigDecimal installmentPerMonth;
 
     @Column(name = "interest_rate")
     private Double interestRate;

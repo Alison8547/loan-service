@@ -4,13 +4,13 @@ import lombok.Getter;
 
 @Getter
 public enum Type {
-    PERSONAL(4), GUARANTEED(3), CONSIGNMENT(2);
+    PERSONAL(0.04), GUARANTEED(0.03), CONSIGNMENT(0.02);
 
 
-    Type(Integer valueInterest) {
+    Type(Double valueInterest) {
         this.valueInterest = valueInterest;
     }
 
-    private Integer valueInterest;
+    private Double valueInterest;
 
 }

@@ -19,7 +19,8 @@ public class LoanResponse {
     private Type type;
     private BigDecimal valueLoan;
     private Integer portion;
-    private BigDecimal valueInterestRate;
+    private BigDecimal valueInterestRateLoan;
+    private BigDecimal installmentPerMonth;
     private Double interestRate;
     private LocalDateTime timeLoan;
 
