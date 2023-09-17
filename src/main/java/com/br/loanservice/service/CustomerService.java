@@ -38,4 +38,10 @@ public class CustomerService {
 
         return mapper.customerToResponse(customer);
     }
+
+
+    public Customer findCustomer(Integer id) {
+        return customerRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Customer not found!"));
+    }
 }
