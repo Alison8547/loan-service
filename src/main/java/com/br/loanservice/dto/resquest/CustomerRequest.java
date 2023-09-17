@@ -15,6 +15,9 @@ import java.math.BigDecimal;
 @Builder
 public class CustomerRequest {
 
+    @NotNull
+    private Integer age;
+
     @NotBlank
     private String cpf;
 

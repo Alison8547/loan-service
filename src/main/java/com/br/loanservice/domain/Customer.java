@@ -22,6 +22,9 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "age_customer")
+    private Integer age;
+
     @Column(name = "cpf")
     private String cpf;
 
