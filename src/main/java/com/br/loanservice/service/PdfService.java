@@ -30,7 +30,7 @@ public class PdfService {
         Document document = new Document(PageSize.A4);
         PdfWriter.getInstance(document, httpServlet.getOutputStream());
 
-        document.isOpen();
+        document.open();
         Font fontTitle = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         fontTitle.setSize(20);
 
@@ -39,7 +39,8 @@ public class PdfService {
 
         Font fontParagraph = FontFactory.getFont(FontFactory.HELVETICA);
         fontParagraph.setSize(12);
-
+        Paragraph paragraphSeparated = new Paragraph("--------------------------------------------------------------------", fontParagraph);
+        paragraphSeparated.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragraph2 = new Paragraph("Name: " + customer.getName(), fontParagraph);
         paragraph2.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragraph3 = new Paragraph("Income: " + customer.getIncome(), fontParagraph);
@@ -60,8 +61,10 @@ public class PdfService {
         paragraph10.setAlignment(Element.ALIGN_LEFT);
         Paragraph paragraph11 = new Paragraph("TimeLoan: " + loan.getTimeLoan(), fontParagraph);
         paragraph11.setAlignment(Element.ALIGN_LEFT);
-
+        Paragraph paragraphSeparated2 = new Paragraph("--------------------------------------------------------------------", fontParagraph);
+        paragraphSeparated2.setAlignment(Element.ALIGN_LEFT);
         document.add(paragraph1);
+        document.add(paragraphSeparated);
         document.add(paragraph2);
         document.add(paragraph3);
         document.add(paragraph4);
@@ -72,6 +75,7 @@ public class PdfService {
         document.add(paragraph9);
         document.add(paragraph10);
         document.add(paragraph11);
+        document.add(paragraphSeparated2);
 
         document.close();
 
