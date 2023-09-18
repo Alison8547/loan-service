@@ -67,6 +67,11 @@ public class LoanService {
         return mapper.loanToResponse(loan);
     }
 
+    public Loan findLoan(Integer id) {
+        return loanRepository.findById(id)
+                .orElseThrow(() -> new BusinessException("Not found loan!"));
+    }
+
 }
 
 
