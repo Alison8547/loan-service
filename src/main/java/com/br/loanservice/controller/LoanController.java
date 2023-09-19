@@ -40,14 +40,7 @@ public class LoanController {
         return new ResponseEntity<>(loanService.openLoan(idCustomer, loanRequest), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Generated pdf the loan", description = "Returns a pdf")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(responseCode = "200", description = "Returns successfully!"),
-                    @ApiResponse(responseCode = "403", description = "You do not have permission to access this resource."),
-                    @ApiResponse(responseCode = "400", description = "An exception was generated")
-            }
-    )
+    @Operation(hidden = true)
     @GetMapping("/generated-pdf-loan/{idLoan}")
     public ResponseEntity<Void> generatedPdfLoan(@PathVariable(name = "idLoan") Integer idLoan, HttpServletResponse httpServletResponse) throws IOException {
         pdfService.generatedPdfLoan(idLoan, httpServletResponse);

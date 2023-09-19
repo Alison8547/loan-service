@@ -27,7 +27,7 @@ public class PdfService {
         Loan loan = loanService.findLoan(idLoan);
         Customer customer = customerService.findCustomer(loan.getIdCustomer());
 
-        Document document = new Document(PageSize.A4);
+        Document document = new Document(PageSize.CROWN_OCTAVO);
         PdfWriter.getInstance(document, httpServlet.getOutputStream());
 
         document.open();
