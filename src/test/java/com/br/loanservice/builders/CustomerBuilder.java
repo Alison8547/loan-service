@@ -10,7 +10,7 @@ public class CustomerBuilder {
 
     public static Customer newCustomerBuilderEntity() {
         return Customer.builder()
-                .id(2)
+                .id(1)
                 .name("Alison")
                 .age(34)
                 .cpf("872.377.100-36")
@@ -21,7 +21,7 @@ public class CustomerBuilder {
 
     public static CustomerResponse newCustomerBuilderResponse() {
         return CustomerResponse.builder()
-                .id(2)
+                .id(1)
                 .name("Alison")
                 .income(BigDecimal.valueOf(3000.0))
                 .location("SP")
@@ -38,16 +38,15 @@ public class CustomerBuilder {
                 .build();
     }
 
-
-    public static Customer newCustomerBuilderEntityIncomeNegative() {
-        return Customer.builder()
-                .id(2)
+    public static CustomerRequest newCustomerBuilderRequestIncomeNegative() {
+        return CustomerRequest.builder()
                 .name("Alison")
                 .age(34)
                 .cpf("872.377.100-36")
-                .income(BigDecimal.valueOf(-2333.0))
+                .income(BigDecimal.valueOf(-3000.0))
                 .location("SP")
                 .build();
     }
+
 
 }
