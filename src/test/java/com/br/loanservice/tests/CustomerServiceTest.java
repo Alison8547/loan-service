@@ -1,6 +1,8 @@
 package com.br.loanservice.tests;
 
 import com.br.loanservice.builders.CustomerBuilder;
+import com.br.loanservice.domain.Customer;
+import com.br.loanservice.dto.response.CustomerLoanResponse;
 import com.br.loanservice.dto.response.CustomerResponse;
 import com.br.loanservice.exception.BusinessException;
 import com.br.loanservice.mapper.CustomerMapper;
@@ -13,9 +15,13 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -73,4 +79,36 @@ public class CustomerServiceTest {
         assertThrows(BusinessException.class, () -> customerService.createCustomer(CustomerBuilder.newCustomerBuilderRequest()));
 
     }
+
+    @Test
+    public void testCustomerListWithSuccess() {
+        //(SETUP)
+        List<CustomerLoanResponse> list = new ArrayList<>(List.of(CustomerBuilder.newCustomerBuilderCustomerLoanResponse()));
+        when(customerRepository.listCustomerLoan(anyInt())).thenReturn(list);
+
+
+        //(ACT)
+        List<CustomerLoanResponse> customerLoanResponses = customerService.listCustomerLoan(CustomerBuilder.newCustomerBuilderCustomerLoanResponse().getIdLoan());
+
+        //(ASSERT)
+        assertNotNull(customerLoanResponses);
+        assertEquals(2, CustomerBuilder.newCustomerBuilderCustomerLoanResponse().getIdLoan());
+
+
+    }
+
+
+    @Test(expected = BusinessException.class)
+    public void testFindCustomerError() {
+        //(SETUP)
+        when(customerRepository.findById(anyInt())).thenReturn(Optional.empty());
+        //(ACT)
+        Customer customer = customerService.findCustomer(44);
+
+        //(ASSERT)
+        assertNotNull(customer);
+        assertThrows(BusinessException.class, () -> customerService.createCustomer(CustomerBuilder.newCustomerBuilderRequest()));
+
+    }
+
 }
